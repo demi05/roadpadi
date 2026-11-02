@@ -1,0 +1,136 @@
+@import "tailwindcss";
+
+/*
+  RoadPadi design tokens — taken from the Brand Identity + Style Guide.
+  Colours were sampled directly from the design file so screens match 1:1.
+*/
+@theme {
+  /* Brand */
+  --color-green: #1dae00; /* primary brand green, hero card, alternate button */
+  --color-neon: #2aff00; /* "Covered" pill on hero */
+  --color-lime: #4cf52a; /* main CTA (Continue), Paid badge, admin active */
+  --color-leaf: #8fff78; /* primary button, Covered badge, progress fill */
+  --color-mint: #d3ffcb; /* fields, info cards, tiles */
+  --color-wash: #f2ffe8; /* flow screen background */
+  --color-sprout: #d0f9a7; /* splash background, avatar */
+  --color-sprout-deep: #b5ee8e; /* splash pattern */
+  --color-ghost: #e9f7e6; /* home pattern */
+  --color-forest: #005408; /* camera frame, dark cards, admin sidebar */
+  --color-yellow: #ece800; /* In review */
+  --color-amber: #ebcc00; /* Ending soon */
+  --color-butter: #fff7ac; /* ending-soon hero card */
+  --color-butter-deep: #ffe95a; /* ending-soon track, crash photo tiles */
+  --color-blush: #ffd3d3; /* alternate button label */
+  --color-stone: #d1d1d1; /* not-covered hero card */
+  --color-slate: #6a6a6a; /* not-covered bar */
+  --color-ink: #000000;
+
+  /* Type: Krona One (primary/display), Archivo (secondary/UI) */
+  --font-display: "Krona One", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Archivo Variable", "Archivo", ui-sans-serif, system-ui, sans-serif;
+
+  /* Style guide: Title 40 medium, body 36, small 24 (@2x) → 20 / 18 / 12 */
+  --text-title: 20px;
+  --text-title--line-height: 1.2;
+  --text-body: 18px;
+  --text-body--line-height: 1.3;
+  --text-small: 12px;
+  --text-small--line-height: 1.35;
+
+  /* Style guide: buttons radius 10, cards radius 12 */
+  --radius-btn: 10px;
+  --radius-card: 12px;
+
+  /* Screen side margin used across the mobile screens */
+  --spacing-screen: 39px;
+}
+
+html,
+body {
+  background: var(--color-wash);
+  color: var(--color-ink);
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Brand mark tiled as a background pattern (splash + home) */
+.pattern-splash {
+  background-color: var(--color-sprout);
+  background-image: url("/pattern-splash.svg");
+  background-size: 67px 65px;
+  background-position: -4px -10px;
+}
+
+.pattern-home {
+  background-color: #ffffff;
+  background-image: url("/pattern-home.svg");
+  background-size: 67px 65px;
+  background-position: -4px -10px;
+}
+
+.dashed-tile {
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='12' ry='12' stroke='%23005408' stroke-width='1.2' stroke-dasharray='5%2c4' stroke-linecap='butt'/%3e%3c/svg%3e");
+}
+
+.dashed-tile-yellow {
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='12' ry='12' stroke='%23ebcc00' stroke-width='1.2' stroke-dasharray='5%2c4' stroke-linecap='butt'/%3e%3c/svg%3e");
+}
+
+.dashed-frame {
+  background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='14' ry='14' stroke='%23d3ffcb' stroke-opacity='0.8' stroke-width='1' stroke-dasharray='4%2c4'/%3e%3c/svg%3e");
+}
+
+@keyframes rp-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.animate-fade-up {
+  animation: rp-fade-up 320ms ease-out both;
+}
+
+@keyframes rp-pop {
+  0% {
+    transform: scale(0.6);
+    opacity: 0;
+  }
+  70% {
+    transform: scale(1.05);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.animate-pop {
+  animation: rp-pop 420ms cubic-bezier(0.2, 0.9, 0.3, 1.2) both;
+}
+
+@keyframes rp-pulse {
+  50% {
+    opacity: 0.35;
+  }
+}
+
+.animate-rec {
+  animation: rp-pulse 1s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-fade-up,
+  .animate-pop,
+  .animate-rec {
+    animation: none;
+  }
+}
