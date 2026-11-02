@@ -6,7 +6,7 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: {
-    default: "RoadPadi — Pay-as-you-go cover for drivers",
+    default: "RoadPadi",
     template: "%s · RoadPadi",
   },
   description:
